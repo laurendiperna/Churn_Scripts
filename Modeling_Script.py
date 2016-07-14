@@ -1,7 +1,8 @@
 def run_model():
 	"""
-	run a gbm on structured data 
-	return a list of model ids
+	Runs a GBM on a structured data set
+	returns:
+		 a list of model ids
 	"""
 
 	# required imports

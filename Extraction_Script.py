@@ -1,8 +1,8 @@
 
 def read_datasource():
 	"""
-	this class imports an unstructure data set from a json file
-	returns: 
+	This function imports an unstructured data set from a json file
+	returns: Pandas Dataframe
 	"""
 	# required imports
 	import pandas as pd 

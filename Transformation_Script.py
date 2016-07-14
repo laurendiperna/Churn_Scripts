@@ -2,9 +2,9 @@ def transform_data():
 	"""
 	Imports a structured dataset and adds new features.
 	returns: 
-	frame - the telco_dataset structured dataframe with newly created features
-	features_list - the list of features
-	response_name - the response column name 
+		frame - the telco_dataset structured dataframe with newly created features
+		features_list - the list of features
+		response_name - the response column name 
 	"""
 
 	# required imports
