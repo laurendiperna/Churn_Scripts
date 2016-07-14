@@ -26,8 +26,7 @@ def run_model():
 	default_glm.train(x=features_list, y=response_name, training_frame=telco_dataset)
 	default_dl.train(x=features_list, y=response_name, training_frame=telco_dataset)
 
-	
-	# TO DO: handle different return method if you have multiple models
+	#Print out all model ids and print out list of model ids
 	print("Default GBM Model ID: %s" % default_gbm.model_id)
 	print("Default GLM Model ID: %s" % default_glm.model_id)
 	print("Default DL Model ID: %s" % default_dl.model_id)
