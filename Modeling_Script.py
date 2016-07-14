@@ -7,8 +7,7 @@ def run_model():
 
 	# required imports
 	import h2o
-	import numpy as np
-	import math
+	import json
 
 	# get structured data from Transform_Data.py
 	from Transformation_Script import transform_data
@@ -33,6 +32,10 @@ def run_model():
 	
 	model_id_list = [default_gbm.model_id,default_glm.model_id,default_dl.model_id]
 	print("All Model IDs as a list: %s" % model_id_list)
+	# uncomment the block below to get alternative print out method
+	# print("<< END_TEXT")
+	# print(json.dumps({"jsonrpc":"2.0", "result":[default_gbm.model_id]}))
+	# print("END_TEXT")
 	return model_id_list
 
 if __name__ == '__main__':
