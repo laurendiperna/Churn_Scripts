@@ -9,7 +9,6 @@ def run_model():
 	import h2o
 	import numpy as np
 	import math
-	from h2o.estimators.gbm import H2OGradientBoostingEstimator
 
 	# get structured data from Transform_Data.py
 	from Transformation_Script import transform_data
@@ -18,11 +17,24 @@ def run_model():
 	telco_dataset, features_list, response_name =  transform_data()
 
 	# initialize the GBM estimator
-	default_model = H2OGradientBoostingEstimator(model_id = "default_model", seed = 1234)
+	default_gbm = h2o.H2OGradientBoostingEstimator(model_id = "default_gbm", seed = 1234)
+	default_glm = h2o.H2OGeneralizedLinearEstimator(model_id = "default_glm", seed = 1234)
+	default_dl = h2o.H2ODeepLearningEstimator(model_id = "default_dl", seed = 1234)
 
 	# train using the entire dataset with the default model metrics
-	default_model.train(x=features_list, y=response_name, training_frame=telco_dataset)
+	default_gbm.train(x=features_list, y=response_name, training_frame=telco_dataset)
+	default_glm.train(x=features_list, y=response_name, training_frame=telco_dataset)
+	default_dl.train(x=features_list, y=response_name, training_frame=telco_dataset)
 
 	
 	# TO DO: handle different return method if you have multiple models
-	return default_model.model_id
+	print("Default GBM Model ID: %s" % default_gbm.model_id)
+	print("Default GLM Model ID: %s" % default_glm.model_id)
+	print("Default DL Model ID: %s" % default_dl.model_id)
+	
+	model_id_list = [default_gbm.model_id,default_glm.model_id,default_dl.model_id]
+	print("All Model IDs as a list: %s" % model_id_list)
+	return model_id_list
+
+if __name__ == '__main__':
+    run_model()
