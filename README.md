@@ -1,4 +1,4 @@
-# Churn_Scripts
+# Churn Scripts
 
 ##A Series of Scripts that Test H2O Steam:
 - [Import Data] (https://github.com/laurendiperna/Churn_Scripts/blob/master/Extraction_Script.py)
