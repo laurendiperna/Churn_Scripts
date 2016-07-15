@@ -24,7 +24,7 @@ RUN \
 
 # Install Oracle Java 7
 RUN \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y wget unzip python-sklearn python-pandas python-numpy python-matplotlib software-properties-common python-software-properties && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y wget unzip python-pip python-sklearn python-pandas python-numpy python-matplotlib software-properties-common python-software-properties && \
   add-apt-repository -y ppa:webupd8team/java && \
   apt-get update -q && \
   echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
@@ -41,6 +41,7 @@ RUN \
   cd /opt && \
   cd `find . -name 'h2o.jar' | sed 's/.\///;s/\/h2o.jar//g'` && \ 
   cp h2o.jar /opt && \
+  /usr/bin/pip install `find . -name "*.whl"` && \
   wget https://raw.githubusercontent.com/h2oai/h2o-3/master/docker/start-h2o-docker.sh
 
 # Get Content
@@ -51,10 +52,6 @@ RUN \
   wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/Transformation_Script.py && \
   wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/Modeling_Script.py
 
-
-# Run Modeling_Script.py
-RUN \
-  wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/run_model.sh
 
 # Define a mountable data directory
 #VOLUME \
@@ -71,4 +68,4 @@ EXPOSE 54322
 # Define default command
 
 CMD \
-  ["/bin/bash"]
+["/bin/bash"]
