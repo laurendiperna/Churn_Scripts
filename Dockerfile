@@ -45,11 +45,13 @@ RUN \
   wget http://s3.amazonaws.com/h2o-training/mnist/train.csv.gz && \
   gunzip train.csv.gz 
 
-# Fetch python and (still need to fetch pandas and dependencies)
+# Get Python stuff
 RUN \
-  apt-get install -y python-dev python-distribute python-pip  \
-  wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/Extraction_Script.py  \
-  wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/Transformation_Script.py  \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y python-pip python-dev python-pandas python-scipy python-numpy
+
+RUN \
+  wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/Extraction_Script.py  && \
+  wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/Transformation_Script.py && \
   wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/Modeling_Script.py
 
 # Define a mountable data directory
