@@ -52,6 +52,10 @@ RUN \
   wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/Modeling_Script.py
 
 
+# Run Modeling_Script.py
+wget https://raw.githubusercontent.com/laurendiperna/Churn_Scripts/master/run_model.sh
+
+
 # Define a mountable data directory
 #VOLUME \
 #  ["/data"]
